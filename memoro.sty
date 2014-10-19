@@ -1,0 +1,20 @@
+\global\let\@style\@empty
+\newcommand{\style}[1]{\renewcommand{\@style}{#1}}
+\style{\normalfont\sffamily\sc}
+
+\usepackage{titlesec}
+\titleformat{\section}{\@style\Large}{\thesection}{1em}{}
+\titleformat{\subsection}{\@style\large}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\style\normalsize}{\thesubsubsection}{1em}{}
+
+\global\let\@details\@empty
+\newcommand{\details}[1]{\newcommand{\entry}[2]{##1&##2\cr}\renewcommand{\@details}{#1}}
+
+\renewcommand{\title}{}
+\renewcommand{\author}{}
+\renewcommand{\date}{}
+
+\renewcommand{\maketitle}{
+{\Huge\@style Memorandum}\vspace{1em}\hrule\vspace{1em}%
+\openup2pt\halign{\quad\hfil\@style##&\quad##\hfil\cr\@details}
+\vspace{1em}\hrule}
